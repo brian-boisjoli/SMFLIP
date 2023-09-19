@@ -29,7 +29,7 @@ function Root() {
       >
         <WalletProvider autoConnect wallets={wallets}>
           <WalletModalProvider>
-            <Gamba creator="DwRFGbjKbsEhUMe5at3qWvH7i8dAJyhhwdnFoZMnLVRV">
+            <Gamba creator="5AZYZb7sfB5K7P2GCWnB6v2G7urQ3LjoKtKRop8A79DA">
               <App />
             </Gamba>
           </WalletModalProvider>
