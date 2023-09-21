@@ -16,6 +16,10 @@
 }
 }
 
+.back_button {
+  transform: translate(0, 25%);
+}
+
 ._icon_2o1qq_103 > * {
   top: 3px !important;
 }
