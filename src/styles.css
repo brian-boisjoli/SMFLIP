@@ -10,6 +10,16 @@
   --recent-plays-bg-hover: #1a1c24;
 }
 
+@media (min-height: 460px){
+._banner_dekri_10 {
+    min-height: 45vh;
+}
+}
+
+._icon_2o1qq_103 > * {
+  top: 3px !important;
+}
+
 [data-theme="light"] {
   --bg-color: #efe9ff;
   --text-color: #080809;
