@@ -15,6 +15,9 @@
     min-height: 45vh;
 }
 }
+.enter{
+  cursor: pointer;
+}
 
 /* The Modal (background) */
 .modal {
