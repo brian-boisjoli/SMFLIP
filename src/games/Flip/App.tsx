@@ -1,63 +1,63 @@
-import { Canvas } from '@react-three/fiber'
-import { solToLamports } from 'gamba'
-import { useGamba } from 'gamba/react'
-import { GameUi, formatLamports } from 'gamba/react-ui'
-import React from 'react'
-import { Coin } from './Coin'
-import { Effect } from './Effect'
+import { Canvas } from "@react-three/fiber";
+import { solToLamports } from "gamba";
+import { useGamba } from "gamba/react";
+import { GameUi, formatLamports } from "gamba/react-ui";
+import React from "react";
+import { Coin } from "./Coin";
+import { Effect } from "./Effect";
 
-import SOUND_COIN from './coin.mp3'
-import SOUND_LOSE from './lose.mp3'
-import SOUND_WIN from './win.mp3'
+import SOUND_COIN from "./coin.mp3";
+import SOUND_LOSE from "./lose.mp3";
+import SOUND_WIN from "./win.mp3";
 
 const SIDES = {
   Heads: [2, 0],
   Tails: [0, 2],
-}
+};
 
-const WAGER_OPTIONS = [0.05, 0.1, 0.5, 1, 3].map(solToLamports)
+const WAGER_OPTIONS = [0.05, 0.1, 0.5, 1, 3].map(solToLamports);
 
 export default function Flip() {
-  const gamba = useGamba()
-  const [flipping, setFlipping] = React.useState(false)
-  const [win, setWin] = React.useState(false)
-  const [resultIndex, setResultIndex] = React.useState(0)
-  const [wager, setWager] = React.useState(WAGER_OPTIONS[0])
+  const gamba = useGamba();
+  const [flipping, setFlipping] = React.useState(false);
+  const [win, setWin] = React.useState(false);
+  const [resultIndex, setResultIndex] = React.useState(0);
+  const [wager, setWager] = React.useState(WAGER_OPTIONS[0]);
 
   const sounds = GameUi.useSounds({
     coin: SOUND_COIN,
     win: SOUND_WIN,
     lose: SOUND_LOSE,
-  })
+  });
 
   const play = async (bet: number[]) => {
     try {
-      setWin(false)
-      setFlipping(true)
+      setWin(false);
+      setFlipping(true);
 
-      sounds.coin.play({ playbackRate: .5 })
+      sounds.coin.play({ playbackRate: 0.5 });
 
-      const res = await gamba.play({ bet, wager })
+      const res = await gamba.play({ bet, wager, creatorFee: 0.025 });
 
-      sounds.coin.play()
+      sounds.coin.play();
 
-      const result = await res.result()
+      const result = await res.result();
 
-      const win = result.payout > 0
+      const win = result.payout > 0;
 
-      setResultIndex(result.resultIndex)
+      setResultIndex(result.resultIndex);
 
-      setWin(win)
+      setWin(win);
 
       if (win) {
-        sounds.win.play()
+        sounds.win.play();
       } else {
-        sounds.lose.play()
+        sounds.lose.play();
       }
     } finally {
-      setFlipping(false)
+      setFlipping(false);
     }
-  }
+  };
 
   return (
     <>
@@ -103,7 +103,7 @@ export default function Flip() {
           color="#CCCCCC"
         />
         <hemisphereLight
-          intensity={.5}
+          intensity={0.5}
           position={[0, 1, 0]}
           scale={[1, 1, 1]}
           color="#ff0000"
@@ -111,5 +111,5 @@ export default function Flip() {
         />
       </Canvas>
     </>
-  )
+  );
 }
