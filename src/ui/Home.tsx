@@ -79,6 +79,13 @@ export function Home() {
               compliance with all laws and regulations pertaining to online
               gambling in your jurisdiction.
             </p>
+            <p>
+              Please note: There is a 2.5% fee that goes to{" "}
+              <a target="_blank" href="https://www.gamba.so/">
+                Gamba
+              </a>{" "}
+              and a 2.5% fee that goes to SolarMoon per play.
+            </p>
             <br></br>
             <button type="button" onClick={hideModal} className="enter">
               Enter
